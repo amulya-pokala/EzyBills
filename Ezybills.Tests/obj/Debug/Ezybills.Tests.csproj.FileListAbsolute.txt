@@ -78,3 +78,7 @@ D:\EzyBills\Ezybills.Tests\bin\Debug\System.Web.WebPages.Razor.xml
 D:\EzyBills\Ezybills.Tests\bin\Debug\System.Web.Optimization.xml
 D:\EzyBills\Ezybills.Tests\bin\Debug\EntityFramework.xml
 D:\EzyBills\Ezybills.Tests\obj\Debug\Ezybills.Tests.csproj.CopyComplete
+C:\Projects\OneWeekHackathon\EzyBills\Ezybills.Tests\bin\Debug\System.Net.Http.Formatting.dll
+C:\Projects\OneWeekHackathon\EzyBills\Ezybills.Tests\bin\Debug\System.Web.Http.dll
+C:\Projects\OneWeekHackathon\EzyBills\Ezybills.Tests\bin\Debug\System.Net.Http.Formatting.xml
+C:\Projects\OneWeekHackathon\EzyBills\Ezybills.Tests\bin\Debug\System.Web.Http.xml

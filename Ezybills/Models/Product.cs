@@ -10,23 +10,29 @@ namespace EzyBills.Models
     public class Product
     {
         [Required]
-        [ForeignKey("VendorID")]
+        [Display(Name ="Vendor")]
         public int ItemVendorId;
+        public virtual Vendor Vendor { get; set; }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductID { get; set; }
 
         [Required]
+        [Display(Name ="Product")]
         public String ProductName { get; set; }
 
         [Required]
+        [Display(Name ="Price")]
         public double ProductPrice { get; set; }
 
+        [Display(Name ="Category")]
         public String ProductCategory { get; set; }
 
+        [Display(Name ="Description(if any)")]
         public String ProductDescription { get; set; }
 
+        [Display(Name ="Quantity")]
         public String ProductQuantity { get; set; }
 
 

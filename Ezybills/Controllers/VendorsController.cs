@@ -158,10 +158,10 @@ namespace Ezybills.Controllers
             var ve=db.Vendors.FirstOrDefault(x => x.VendorEmail == vendor.VendorEmail);
             return Json(new { vendorId= ve.VendorID });
         }
-        public ActionResult Profile(Vendor vendor)
+        /*public ActionResult Profile(Vendor vendor)
         {
             return View(vendor);
-        }
+        }*/
 
         protected override void Dispose(bool disposing)
         {

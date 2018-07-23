@@ -11,19 +11,22 @@ namespace EzyBills.Models
     public class Bill
     {
         [Required]
-        [ForeignKey("VendorID")]
-        public int BillVendorID;
+        [Display(Name ="Vendor")]
+        public int BillVendorID { get; set; }
+        public virtual Vendor Vendor { get; set; }
+
 
         [Required]
-        [ForeignKey("CustomerID")]
-        public int BillCustomerID;
+        [Display(Name ="Customer")]
+        public int BillCustomerID { get; set; }
+        public virtual Customer Customer { get; set; }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BillID { get; set; }
 
-        [Display(Name ="Total")]
-        public double Total_Bill { get; set; }
+        [Display(Name = "Total")]
+        public double Total_Bill;
 
 
         [Display(Name ="Date")]

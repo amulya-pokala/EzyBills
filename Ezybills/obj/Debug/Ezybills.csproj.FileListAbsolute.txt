@@ -204,3 +204,9 @@ D:\EzyBills\Ezybills\bin\System.Web.Http.dll
 D:\EzyBills\Ezybills\bin\System.Net.Http.Formatting.xml
 D:\EzyBills\Ezybills\bin\System.Web.Http.xml
 D:\EzyBills\Ezybills\bin\System.Web.Http.Common.xml
+C:\Projects\OneWeekHackathon\EzyBills\Ezybills\bin\System.Net.Http.Formatting.dll
+C:\Projects\OneWeekHackathon\EzyBills\Ezybills\bin\System.Web.Http.Common.dll
+C:\Projects\OneWeekHackathon\EzyBills\Ezybills\bin\System.Web.Http.dll
+C:\Projects\OneWeekHackathon\EzyBills\Ezybills\bin\System.Net.Http.Formatting.xml
+C:\Projects\OneWeekHackathon\EzyBills\Ezybills\bin\System.Web.Http.xml
+C:\Projects\OneWeekHackathon\EzyBills\Ezybills\bin\System.Web.Http.Common.xml

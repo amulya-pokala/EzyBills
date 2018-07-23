@@ -8,9 +8,7 @@ using Ezybills.Models;
 namespace Ezybills.Models
 {
     public class Item
-    {
-
-
+    { 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ItemId { get; set; }
