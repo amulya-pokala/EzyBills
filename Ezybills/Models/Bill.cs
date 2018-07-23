@@ -11,6 +11,7 @@ namespace EzyBills.Models
     public class Bill
     {
         [Required]
+<<<<<<< HEAD
         [Display(Name ="Vendor")]
         public int BillVendorID { get; set; }
         public virtual Vendor Vendor { get; set; }
@@ -20,6 +21,14 @@ namespace EzyBills.Models
         [Display(Name ="Customer")]
         public int BillCustomerID { get; set; }
         public virtual Customer Customer { get; set; }
+=======
+       
+        public int BillVendorID { get; set; }
+
+        [Required]
+
+        public int BillCustomerID { get; set; }
+>>>>>>> f8854fddcfa0a376030405a3a8710b490387e8f7
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

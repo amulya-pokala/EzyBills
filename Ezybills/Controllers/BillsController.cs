@@ -54,8 +54,6 @@ namespace Ezybills.Controllers
            
             return Json(new { ok = true, BillID = bill.BillID});
 
-
-
         }
 
 
@@ -115,11 +113,12 @@ namespace Ezybills.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        //GET: Bill/GetByVendorId
-        [HttpGet]
-        public ActionResult GetByVendorId(int? id)
+        //POST: Bill/GetByVendorId
+        [HttpPost]
+        public ActionResult GetByVendorId([System.Web.Http.FromBody] Bill bill)
         {
-            var ids = db.Bills.Select(x => x.BillVendorID == id);
+            var bills = db.Bills.ToArray();
+            var ids = bills.Where(x => x.BillVendorID == (int)bill.BillID);
             return Json(new { ok = true, id = ids });
             
         }
