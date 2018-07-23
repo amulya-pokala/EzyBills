@@ -45,25 +45,18 @@ namespace Ezybills.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-      
-        public ActionResult Create([System.Web.Http.FromBody]Item item)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ItemId,BillId,ItemName,QuantityPurchased,QuantityCost")] Item item)
         {
-           
+            if (ModelState.IsValid)
+            {
                 db.Items.Add(item);
                 db.SaveChanges();
-                return Json(new { ok=true});
-}
+                return RedirectToAction("Index");
+            }
 
-        //Items/GetByBillId
-        [HttpPost]
-        public ActionResult GetByBillId([System.Web.Http.FromBody] Item item)
-        {
-
-            var items = db.Items.ToArray();
-            var ids = items.Where(x => x.BillId == (int)item.ItemId);
-            return Json(new { ok = true, id = ids });
+            return View(item);
         }
-
 
         // GET: Items/Edit/5
         public ActionResult Edit(int? id)
@@ -85,7 +78,7 @@ namespace Ezybills.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ItemId,QuantityPurchased")] Item item)
+        public ActionResult Edit([Bind(Include = "ItemId,BillId,ItemName,QuantityPurchased,QuantityCost")] Item item)
         {
             if (ModelState.IsValid)
             {

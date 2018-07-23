@@ -54,6 +54,8 @@ namespace Ezybills.Controllers
            
             return Json(new { ok = true, BillID = bill.BillID});
 
+
+
         }
 
 
@@ -113,12 +115,11 @@ namespace Ezybills.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        //POST: Bill/GetByVendorId
-        [HttpPost]
-        public ActionResult GetByVendorId([System.Web.Http.FromBody] Bill bill)
+        //GET: Bill/GetByVendorId
+        [HttpGet]
+        public ActionResult GetByVendorId(int? id)
         {
-            var bills = db.Bills.ToArray();
-            var ids = bills.Where(x => x.BillVendorID == (int)bill.BillID);
+            var ids = db.Bills.Select(x => x.BillVendorID == id);
             return Json(new { ok = true, id = ids });
             
         }
@@ -130,6 +131,13 @@ namespace Ezybills.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult SummaryByVendor(DateTime startdate, DateTime enddate, int vendorid)
+        {
+            var itemid = db.Bills.Select(x => x.Vendor.VendorID == vendorid && x.dateOfPurchase >= startdate &&
+            x.dateOfPurchase <= enddate);
+            return Json(new { ok = true});
         }
     }
 }

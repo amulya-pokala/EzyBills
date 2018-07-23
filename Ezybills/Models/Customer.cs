@@ -4,8 +4,9 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
-
+using System.Web.Mvc;
+using System.Net;
+using System.Data;
 
 namespace EzyBills.Models
 {
@@ -16,7 +17,9 @@ namespace EzyBills.Models
         public int CustomerID { get; set; }
 
         [Required]
-        [Display(Name="Username")]
+        [Display(Name = "Username")]
+        [Remote("UserNameDoesNotExit", "Customers", HttpMethod = "POST", ErrorMessage = "Username already exits!!")]
+        public string UserName { get; set; }
         public string CustomerUsername { get; set; }
 
         [Required]
@@ -44,13 +47,15 @@ namespace EzyBills.Models
 
         [Required]
         [EmailAddress]
-        [Display(Name ="Email")]
+        [Display(Name = "Email")]
         public String CustomerEmail { get; set; }
 
         [Required]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
-        [Display(Name="PhoneNo")]
+        [Display(Name = "PhoneNo")]
         public string CustomerPhone { get; set; }
+
+
 
     }
 }

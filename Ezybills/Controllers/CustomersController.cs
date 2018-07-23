@@ -4,6 +4,7 @@ using System.Net;
 using System.Web.Mvc;
 using EzyBills.Models;
 using Ezybills.Models;
+using System.Web.Security;
 
 namespace Ezybills.Controllers
 {
@@ -33,29 +34,29 @@ namespace Ezybills.Controllers
         }
 
         // GET: Customers/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
-        // GET: Customers/Login
-        public ActionResult Login()
-        {
-            return View();
-        }
         // POST: Customers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-
         public ActionResult Create([System.Web.Http.FromBody] Customer customer)
         {
 
             db.Customers.Add(customer);
             db.SaveChanges();
             return View("Index");
-
         }
+        // GET: Customers/Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+       
         // POST: Customers/Login
         [HttpPost]
 
@@ -65,7 +66,6 @@ namespace Ezybills.Controllers
             if(db.Customers.FirstOrDefault(x => (x.CustomerEmail == customer.CustomerEmail && x.SetCustomerPassword == customer.SetCustomerPassword)) != null)
             {
                 return Json(new { ok = true, newurl = Url.Action("Profile") });
-
             }
 
             return RedirectToAction("Error");
@@ -136,6 +136,14 @@ namespace Ezybills.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        [HttpPost]
+        public JsonResult UserNameDoesNotExit(string UserName)
+        {
+            var user = Membership.GetUser(UserName);
+            return Json(user == null);
         }
     }
 }

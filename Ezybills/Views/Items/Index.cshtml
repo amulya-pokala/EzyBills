@@ -1,4 +1,4 @@
-﻿@model Ezybills.Models.Item
+﻿@model IEnumerable<Ezybills.Models.Item>
 
 @{
     ViewBag.Title = "Index";
@@ -6,45 +6,46 @@
 
 <h2>Index</h2>
 
-<div>
-    <h4>Item</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BillId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BillId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ItemName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.QuantityPurchased)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.QuantityPurchased)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.QuantityCost)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.QuantityCost)
-        </dd>
-
-    </dl>
-</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ItemId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Create New", "Create")
 </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BillId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantityPurchased)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantityCost)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BillId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantityPurchased)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantityCost)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ItemId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ItemId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ItemId })
+        </td>
+    </tr>
+}
+
+</table>

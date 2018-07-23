@@ -33,7 +33,7 @@ namespace EzyBills.Models
         public String ProductDescription { get; set; }
 
         [Display(Name ="Quantity")]
-        public String ProductQuantity { get; set; }
+        private int ProductQuantity { get; set; }
 
 
     }
