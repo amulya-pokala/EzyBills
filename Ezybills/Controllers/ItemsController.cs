@@ -55,11 +55,13 @@ namespace Ezybills.Controllers
 }
 
         //Items/GetByBillId
-        [HttpGet]
-        public ActionResult GetByBillId(int? id)
+        [HttpPost]
+        public ActionResult GetByBillId([System.Web.Http.FromBody] Item item)
         {
-            var items = db.Items.Select(x => x.BillId == id);
-            return Json(new { ok = true, item = items });
+
+            var items = db.Items.ToArray();
+            var ids = items.Where(x => x.BillId == (int)item.ItemId);
+            return Json(new { ok = true, id = ids });
         }
 
 

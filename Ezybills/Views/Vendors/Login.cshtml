@@ -332,7 +332,7 @@
 
         function computeBill() {
             console.log(itemList);
-            console.log(vendorId);
+            console.log("in compute bill: " + vendorId);
             $.ajax({
 
                 url: 'http://localhost:59847/Bills/Create',
@@ -380,21 +380,36 @@
         function summary() {
             $.ajax({
 
-                url: 'http://localhost:59847/Bills/GetByVendorId/' + vendorId,
-                type: 'GET',
+                url: 'http://localhost:59847/Bills/GetByVendorId/',
+                type: 'POST',
                 contentType: 'application/json',
+                data: JSON.stringify({
+                    "BillID": vendorId,
+
+                }),
                 success: function (data) {
                     if (data.ok) {
                         console.log("retrieved all the bill ids");
-                        for (var id in data.id) {
-                            console.log(id);
+                        console.log(data.id);
+                        console.log(data.id.length);
+                        for (var i = 0; i < data.id.length; i++) {
+                            console.log((data.id[i]));
+                            console.log("bill id :" + (data.id)[i].BillID);
                             $.ajax({
-                                url: 'http://localhost:59847/Items/GetByBillId/' + id,
-                                type: 'GET',
+                                url: 'http://localhost:59847/Items/GetByBillId/',
+                                type: 'POST',
                                 contentType: 'application/json',
+                                data: JSON.stringify({
+                                    "ItemId": (data.id)[i].BillID,
+
+                                }),
                                 success: function (itemdata) {
-                                    for (var item in itemdata.item) {
-                                        console.log(item);
+                                    console.log("itemdata: " + itemdata.id);
+                                    for (var j = 0; j < itemdata.id.length; j++) {
+                                        console.log((itemdata.id)[j].ItemName);
+                                        console.log((itemdata.id)[j].QuantityPurchased);
+                                        console.log((itemdata.id)[j].QuantityCost);
+
 
                                     }
                                 }

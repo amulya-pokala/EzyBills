@@ -11,12 +11,12 @@ namespace EzyBills.Models
     public class Bill
     {
         [Required]
-        [ForeignKey("VendorID")]
-        public int BillVendorID;
+       
+        public int BillVendorID { get; set; }
 
         [Required]
-        [ForeignKey("CustomerID")]
-        public int BillCustomerID;
+
+        public int BillCustomerID { get; set; }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

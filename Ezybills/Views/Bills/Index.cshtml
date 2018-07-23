@@ -29,9 +29,12 @@
             @Html.DisplayFor(modelItem => item.dateOfPurchase)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BillID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BillID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BillID })
+            @Html.DisplayFor(modelItem => item.BillVendorID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.BillID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.BillID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.BillID })
         </td>
     </tr>
 }
